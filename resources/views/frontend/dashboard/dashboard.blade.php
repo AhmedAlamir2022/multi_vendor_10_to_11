@@ -1,17 +1,71 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('User Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('frontend.dashboard.layouts.master')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+@section('title')
+    Dashboard || Multi Vendor
+@endsection
+
+@section('content')
+    <section id="wsus__dashboard">
+
+        <div class="container-fluid">
+            @include('frontend.dashboard.layouts.sidebar')
+            <div class="row">
+                <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
+                    <h3>User Dashboard</h3>
+                    <br>
+                    <div class="dashboard_content">
+                        <div class="wsus__dashboard">
+                            <div class="row">
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item red" href="">
+                                        <i class="fas fa-cart-plus"></i>
+                                        <p>Total Order</p>
+                                        <h4 style="color:#ffff">44</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item green" href="">
+                                        <i class="fas fa-cart-plus"></i>
+                                        <p>Pending Orders</p>
+                                        <h4 style="color:#ffff">44</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item sky" href="">
+                                        <i class="fas fa-cart-plus"></i>
+                                        <p>Complete Orders</p>
+                                        <h4 style="color:#ffff">44</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="">
+                                        <i class="fas fa-star"></i>
+                                        <p>Reviews</p>
+                                        <h4 style="color:#ffff">44</h4>
+                                    </a>
+                                </div>
+
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item purple" href="">
+                                        <i class="fas fa-star"></i>
+                                        <p>Wishlist</p>
+                                        <h4 style="color:#ffff">44</h4>
+                                    </a>
+                                </div>
+
+                                <div class="col-xl-2 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item orange" href="">
+                                        <i class="fas fa-user-shield"></i>
+                                        <p>profile</p>
+                                        <h4 style="color:#ffff">-</h4>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+@endsection
