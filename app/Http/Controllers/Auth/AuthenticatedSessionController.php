@@ -37,11 +37,11 @@ class AuthenticatedSessionController extends Controller
         }
 
         if($request->user()->role === 'admin'){
-            // toastr()->info('Login to admin account Successfully!');
+            toastr()->info('Login to admin account Successfully!');
             return redirect()->intended('/admin/dashboard');
         }elseif($request->user()->role === 'vendor'){
             return redirect()->intended('/vendor/dashboard');
-            // toastr()->info('Login to vendor account Successfully!');
+            toastr()->info('Login to vendor account Successfully!');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);
@@ -58,7 +58,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        // toastr()->info('Logout Successfully!');
+        toastr()->info('Logout Successfully!');
 
         return redirect('/');
     }
