@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
 
+
+
     {{-- @if ($settings->layout === 'RTL')
         <link rel="stylesheet" href="{{ asset('backend/assets/css/rtl.css') }}">
     @endif --}}
@@ -41,8 +43,6 @@
             name: "{{ auth()->user()->nmae }}",
             image: "{{ asset(auth()->user()->image) }}"
         }
-        
-
     </script>
 
     {{-- @vite(['resources/js/app.js', 'resources/js/admin.js']) --}}
@@ -66,6 +66,15 @@
             <div class="main-content">
                 @yield('content')
             </div>
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad
+                        Nauval Azhar</a>
+                </div>
+                <div class="footer-right">
+
+                </div>
+            </footer>
 
         </div>
     </div>
@@ -81,6 +90,17 @@
 
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/modules/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('backend/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('backend/assets/js/page/modules-datatables.js') }}"></script>
+
+    <script src="{{ asset('backend/assets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/modules-datatables.js"></script>
     {{-- <script src="{{asset('backend/assets/modules/chart.min.js')}}"></script> --}}
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
@@ -102,6 +122,10 @@
     <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+
+
+
+
 
     <script>
         @if ($errors->any())

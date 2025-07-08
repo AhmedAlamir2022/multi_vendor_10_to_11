@@ -135,7 +135,7 @@
                 </ul>
             </li> --}}
 
-            {{-- <li
+            <li
                 class="dropdown {{ setActive([
                     'admin.slider.*',
                     'admin.home-page-setting',
@@ -147,20 +147,20 @@
                     <span>Manage Website</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.slider.index') }}">Slider</a></li>
-                    <li class="{{ setActive(['admin.home-page-setting']) }}"><a class="nav-link"
+                            href="{{ route('admin.slider.index') }}">Sliders</a></li>
+                    {{-- <li class="{{ setActive(['admin.home-page-setting']) }}"><a class="nav-link"
                             href="{{ route('admin.home-page-setting') }}">Home Page Setting</a></li>
                     <li class="{{ setActive(['admin.vendor-condition.index']) }}"><a class="nav-link"
                             href="{{ route('admin.vendor-condition.index') }}">Vendor Condition</a></li>
                     <li class="{{ setActive(['admin.about.index']) }}"><a class="nav-link"
                             href="{{ route('admin.about.index') }}">About page</a></li>
                     <li class="{{ setActive(['admin.terms-and-conditions.index']) }}"><a class="nav-link"
-                            href="{{ route('admin.terms-and-conditions.index') }}">Terms Page</a></li>
+                            href="{{ route('admin.terms-and-conditions.index') }}">Terms Page</a></li> --}}
 
                 </ul>
-            </li> --}}
+            </li>
 
-             {{-- <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}"
+            {{-- <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}"
             href="{{ route('admin.advertisement.index') }}"><i class="fas fa-ad"></i>
             <span>Advertisement</span></a></li> --}}
 
