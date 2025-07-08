@@ -1,4 +1,4 @@
-{{-- @php
+@php
     $categories = \App\Models\Category::where('status', 1)
         ->with([
             'subCategories' => function ($query) {
@@ -10,7 +10,7 @@
             },
         ])
         ->get();
-@endphp --}}
+@endphp
 
 <nav class="wsus__main_menu d-none d-lg-block">
     <div class="container">
@@ -22,22 +22,22 @@
                     </div>
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
 
-                        {{-- @foreach ($categories as $category)
+                        @foreach ($categories as $category)
                             <li><a class="{{ count($category->subCategories) > 0 ? 'wsus__droap_arrow' : '' }}"
-                                    href="{{ route('products.index', ['category' => $category->slug]) }}"><i
+                                    href=""><i
                                         class="{{ $category->icon }}"></i> {{ $category->name }} </a>
                                 @if (count($category->subCategories) > 0)
                                     <ul class="wsus_menu_cat_droapdown">
                                         @foreach ($category->subCategories as $subCategory)
                                             <li><a
-                                                    href="{{ route('products.index', ['subcategory' => $subCategory->slug]) }}">{{ $subCategory->name }}
+                                                    href="">{{ $subCategory->name }}
                                                     <i
                                                         class="{{ count($subCategory->childCategories) > 0 ? 'fas fa-angle-right' : '' }}"></i></a>
                                                 @if (count($subCategory->childCategories) > 0)
                                                     <ul class="wsus__sub_category">
                                                         @foreach ($subCategory->childCategories as $childCategory)
                                                             <li><a
-                                                                    href="{{ route('products.index', ['childcategory' => $childCategory->slug]) }}">{{ $childCategory->name }}</a>
+                                                                    href="">{{ $childCategory->name }}</a>
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -47,7 +47,7 @@
                                     </ul>
                                 @endif
                             </li>
-                        @endforeach --}}
+                        @endforeach
                     </ul>
 
                     <ul class="wsus__menu_item">
@@ -129,7 +129,7 @@
             <div class="wsus__mobile_menu_main_menu">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <ul class="wsus_mobile_menu_category">
-                        {{-- @foreach ($categories as $categoryItem)
+                        @foreach ($categories as $categoryItem)
                             <li>
                                 <a href="#"
                                     class="{{ count($categoryItem->subCategories) > 0 ? 'accordion-button' : '' }} collapsed"
@@ -151,7 +151,7 @@
                                     </div>
                                 @endif
                             </li>
-                        @endforeach --}}
+                        @endforeach
                     </ul>
                 </div>
             </div>
