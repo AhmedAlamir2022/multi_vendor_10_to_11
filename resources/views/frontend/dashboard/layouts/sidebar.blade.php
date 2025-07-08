@@ -24,7 +24,7 @@
         <li><a class="{{ setActive(['user.review.*']) }}" href=""><i
                     class="far fa-star"></i> Reviews</a></li>
 
-        <li><a class="{{ setActive(['user.profile']) }}" href=""><i
+        <li><a class="{{ setActive(['user.profile']) }}" href="{{ route('user.profile') }}"><i
                     class="far fa-user"></i> My Profile</a></li>
         <li><a class="{{ setActive(['user.address.*']) }}" href=""><i
                     class="fal fa-gift-card"></i> Addresses</a></li>
