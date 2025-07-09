@@ -40,7 +40,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.brand.*']) }}"><a class="nav-link"
                             href="{{ route('admin.brand.index') }}">Brands</a></li>
-                    {{-- <li
+                    <li
                         class="{{ setActive([
                             'admin.products.*',
                             'admin.products-image-gallery.*',
@@ -49,7 +49,7 @@
                             'admin.reviews.*',
                         ]) }}">
                         <a class="nav-link" href="{{ route('admin.products.index') }}">Products</a>
-                    </li> --}}
+                    </li>
                     {{-- <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link"
                             href="{{ route('admin.seller-products.index') }}">Seller Products</a></li> --}}
                     {{-- <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
