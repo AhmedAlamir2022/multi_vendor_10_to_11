@@ -24,7 +24,7 @@
                     class="fas fa-star"></i> My Withdraw</a></li>
 
         <li><a class="{{ setActive(['vendor.shop-profile.index']) }}"
-                href=""><i class="far fa-user"></i> Shop Profile</a></li>
+                href="{{ route('vendor.shop-profile.index') }}"><i class="far fa-user"></i> Shop Profile</a></li>
         <li><a class="{{ setActive(['vendor.profile']) }}" href="{{ route('vendor.profile') }}"><i
                     class="far fa-user"></i> My Profile</a></li>
         <li>
