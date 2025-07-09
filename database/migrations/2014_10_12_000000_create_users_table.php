@@ -20,6 +20,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            $table->string('shop_name')->nullable();
+            $table->text('banner')->nullable();
+            $table->text('address')->nullable();
+            $table->text('description')->nullable();
+            $table->string('fb_link')->nullable();
+            $table->string('x_link')->nullable();
+            $table->string('insta_link')->nullable();
+
+
             $table->enum('role', ['admin', 'vendor', 'user'])->default('user');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('vendor_status')->nullable();

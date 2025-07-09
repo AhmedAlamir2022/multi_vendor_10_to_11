@@ -99,7 +99,6 @@
 
             {{-- <li
                 class="dropdown {{ setActive([
-                    'admin.vendor-profile.*',
                     'admin.flash-sale.*',
                     'admin.coupons.*',
                     'admin.shipping-rule.*',

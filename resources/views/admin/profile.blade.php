@@ -50,7 +50,7 @@
                 </div>
 
                 {{-- Proile Update --}}
-                {{-- <div class="col-12 col-md-12 col-lg-9">
+                <div class="col-12 col-md-12 col-lg-9">
                     <div class="card">
                         <form method="post" class="needs-validation" novalidate=""
                             action="{{ route('admin.shop-profile.update') }}" enctype="multipart/form-data">
@@ -95,9 +95,9 @@
                                             value="{{ Auth::user()->fb_link }}">
                                     </div>
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Twitter Link</label>
-                                        <input type="url" name="tw_link" class="form-control"
-                                            value="{{ Auth::user()->tw_link }}">
+                                        <label>X Link</label>
+                                        <input type="url" name="x_link" class="form-control"
+                                            value="{{ Auth::user()->x_link }}">
                                     </div>
                                     <div class="form-group col-md-12 col-12">
                                         <label>Instagram Link</label>
@@ -111,7 +111,7 @@
                             </div>
                         </form>
                     </div>
-                </div> --}}
+                </div>
 
 
                 <div class="col-12 col-md-12 col-lg-9">
