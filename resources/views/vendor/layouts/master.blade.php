@@ -41,7 +41,6 @@
             name: "{{ auth()->user()->nmae }}",
             image: "{{ asset(auth()->user()->image) }}"
         }
-        
     </script>
     @vite(['resources/js/app.js', 'resources/js/frontend.js'])
 </head>

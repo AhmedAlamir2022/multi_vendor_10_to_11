@@ -10,28 +10,26 @@ use App\Models\Product;
 use App\Models\ProductImageGallery;
 use App\Models\ProductVariant;
 use App\Models\SubCategory;
-use App\Models\User;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Str;
 
-class ProductController extends Controller
+class VendorProductController extends Controller
 {
     use ImageUploadTrait;
 
     public function index()
     {
         $products = Product::where('vendor_id', Auth::user()->id)->latest()->get();
-        return view('admin.product.index', compact('products'));
+        return view('vendor.product.index', compact('products'));
     }
 
     public function create()
     {
-        $vendors = User::where('role', 'vendor')->get();
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin.product.create', compact('categories', 'brands', 'vendors'));
+        return view('vendor.product.create', compact('categories', 'brands'));
     }
 
     public function store(Request $request)
@@ -43,12 +41,14 @@ class ProductController extends Controller
             'brand' => ['required'],
             'price' => ['required'],
             'qty' => ['required'],
+            'product_type' => ['required'],
             'short_description' => ['required', 'max: 600'],
             'long_description' => ['required'],
             'seo_title' => ['nullable', 'max:200'],
-            'seo_description' => ['nullable', 'max:350'],
+            'seo_description' => ['nullable', 'max:250'],
             'status' => ['required']
         ]);
+
         /** Handle the image upload */
         $imagePath = $this->uploadImage($request, 'image', 'uploads');
         $product = new Product();
@@ -71,27 +71,40 @@ class ProductController extends Controller
         $product->offer_end_date = $request->offer_end_date;
         $product->product_type = $request->product_type;
         $product->status = $request->status;
-        $product->is_approved = 1;
+        $product->is_approved = 0;
         $product->seo_title = $request->seo_title;
         $product->seo_description = $request->seo_description;
         $product->save();
-        toastr('Product Created Successfully!', 'success');
-        return redirect()->route('admin.products.index');
+        toastr('Product Created Successfully & Waiting approval!', 'warning');
+        return redirect()->route('vendor.products.index');
     }
 
     public function edit(string $id)
     {
         $product = Product::findOrFail($id);
+        /** Check if it's the owner of the product */
+        if ($product->vendor_id != Auth::user()->id) {
+            abort(404);
+        }
         $subCategories = SubCategory::where('category_id', $product->category_id)->get();
         $childCategories = ChildCategory::where('sub_category_id', $product->sub_category_id)->get();
         $categories = Category::all();
         $brands = Brand::all();
-        $vendors = User::where('role', 'vendor')->get();
-        return view('admin.product.edit', compact('product', 'categories', 'brands', 'subCategories', 'childCategories', 'vendors'));
+        return view(
+            'vendor.product.edit',
+            compact(
+                'product',
+                'subCategories',
+                'childCategories',
+                'categories',
+                'brands'
+            )
+        );
     }
 
     public function update(Request $request, string $id)
     {
+
         $request->validate([
             'image' => ['nullable', 'image', 'max:3000'],
             'name' => ['required', 'max:200'],
@@ -99,20 +112,22 @@ class ProductController extends Controller
             'brand' => ['required'],
             'price' => ['required'],
             'qty' => ['required'],
+            'product_type' => ['required'],
             'short_description' => ['required', 'max: 600'],
             'long_description' => ['required'],
             'seo_title' => ['nullable', 'max:200'],
-            'seo_description' => ['nullable', 'max:350'],
+            'seo_description' => ['nullable', 'max:250'],
             'status' => ['required']
         ]);
         $product = Product::findOrFail($id);
+        if ($product->vendor_id != Auth::user()->id) {
+            abort(404);
+        }
         /** Handle the image upload */
         $imagePath = $this->updateImage($request, 'image', 'uploads', $product->thumb_image);
-
         $product->thumb_image = empty(!$imagePath) ? $imagePath : $product->thumb_image;
         $product->name = $request->name;
         $product->slug = Str::slug($request->name);
-        $product->vendor_id = Auth::user()->id;
         $product->category_id = $request->category;
         $product->sub_category_id = $request->sub_category;
         $product->child_category_id = $request->child_category;
@@ -128,30 +143,28 @@ class ProductController extends Controller
         $product->offer_end_date = $request->offer_end_date;
         $product->product_type = $request->product_type;
         $product->status = $request->status;
+        $product->is_approved = $product->is_approved;
         $product->seo_title = $request->seo_title;
         $product->seo_description = $request->seo_description;
         $product->save();
-        toastr('Product Updated Successfully!', 'info');
-        return redirect()->route('admin.products.index');
+        toastr('Updated Successfully!', 'info');
+        return redirect()->route('vendor.products.index');
     }
 
     public function destroy(string $id)
     {
         $product = Product::findOrFail($id);
-        // if (OrderProduct::where('product_id', $product->id)->count() > 0) {
-        //     return response(['status' => 'error', 'message' => 'This product have orders can\'t delete it.']);
-        // }
-
+        if ($product->vendor_id != Auth::user()->id) {
+            abort(404);
+        }
         /** Delte the main product image */
         $this->deleteImage($product->thumb_image);
-
         /** Delete product gallery images */
         $galleryImages = ProductImageGallery::where('product_id', $product->id)->get();
         foreach ($galleryImages as $image) {
             $this->deleteImage($image->image);
             $image->delete();
         }
-
         /** Delete product variants if exist */
         $variants = ProductVariant::where('product_id', $product->id)->get();
         foreach ($variants as $variant) {
@@ -159,7 +172,15 @@ class ProductController extends Controller
             $variant->delete();
         }
         $product->delete();
-        return response(['status' => 'success', 'message' => 'Product Deleted Successfully!']);
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $product = Product::findOrFail($request->id);
+        $product->status = $request->status == 'true' ? 1 : 0;
+        $product->save();
+        return response(['message' => 'Status has been updated!']);
     }
 
     public function getSubCategories(Request $request)
@@ -172,13 +193,5 @@ class ProductController extends Controller
     {
         $childCategories = ChildCategory::where('sub_category_id', $request->id)->get();
         return $childCategories;
-    }
-
-    public function changeStatus(Request $request)
-    {
-        $product = Product::findOrFail($request->id);
-        $product->status = $request->status == 'true' ? 1 : 0;
-        $product->save();
-        return response(['message' => 'Status has been updated!']);
     }
 }
