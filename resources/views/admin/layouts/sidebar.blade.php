@@ -50,10 +50,10 @@
                         ]) }}">
                         <a class="nav-link" href="{{ route('admin.products.index') }}">Products</a>
                     </li>
-                    {{-- <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.seller-products.index') }}">Seller Products</a></li> --}}
-                    {{-- <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.seller-pending-products.index') }}">Seller Pending Products</a></li> --}}
+                    <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.seller-products.index') }}">Seller Products</a></li>
+                    <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.seller-pending-products.index') }}">Seller Pending Products</a></li>
                     {{-- <li class="{{ setActive(['admin.reviews.*']) }}"><a class="nav-link"
                             href="{{ route('admin.reviews.index') }}">Product Reviews</a></li> --}}
                 </ul>
