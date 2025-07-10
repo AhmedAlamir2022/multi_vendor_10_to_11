@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
@@ -30,4 +31,11 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
+
+Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
+
+/** Product route */
+Route::get('products', [ProductController::class, 'productsIndex'])->name('products.index');
+Route::get('product-detail/{slug}', [ProductController::class, 'showProduct'])->name('product-detail');
+Route::get('change-product-list-view', [ProductController::class, 'chageListView'])->name('change-product-list-view');
 
