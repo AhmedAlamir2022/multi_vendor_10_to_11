@@ -24,20 +24,17 @@
 
                         @foreach ($categories as $category)
                             <li><a class="{{ count($category->subCategories) > 0 ? 'wsus__droap_arrow' : '' }}"
-                                    href=""><i
-                                        class="{{ $category->icon }}"></i> {{ $category->name }} </a>
+                                    href=""><i class="{{ $category->icon }}"></i> {{ $category->name }} </a>
                                 @if (count($category->subCategories) > 0)
                                     <ul class="wsus_menu_cat_droapdown">
                                         @foreach ($category->subCategories as $subCategory)
-                                            <li><a
-                                                    href="">{{ $subCategory->name }}
+                                            <li><a href="">{{ $subCategory->name }}
                                                     <i
                                                         class="{{ count($subCategory->childCategories) > 0 ? 'fas fa-angle-right' : '' }}"></i></a>
                                                 @if (count($subCategory->childCategories) > 0)
                                                     <ul class="wsus__sub_category">
                                                         @foreach ($subCategory->childCategories as $childCategory)
-                                                            <li><a
-                                                                    href="">{{ $childCategory->name }}</a>
+                                                            <li><a href="">{{ $childCategory->name }}</a>
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -52,29 +49,32 @@
 
                     <ul class="wsus__menu_item">
                         <li><a class="{{ setActive(['home']) }}" href="{{ url('/') }}">home</a></li>
-                        {{-- <li><a class="{{ setActive(['products.index']) }}" --}}
-                        {{-- href="{{ route('products.index') }}">Products</a></li> --}}
+                        <li><a class="{{ setActive(['products.index']) }}"
+                                href="{{ route('products.index') }}">Products</a></li>
                         {{-- <li><a class="{{ setActive(['vendor.index']) }}" href="{{ route('vendor.index') }}">vendors</a>
                         </li> --}}
                         {{-- <li><a class="{{ setActive(['blog']) }}" href="{{ route('blog') }}">blog</a></li> --}}
                         {{-- <li><a class="{{ setActive(['about']) }}" href="{{ route('about') }}">about</a></li> --}}
                         {{-- <li><a class="{{ setActive(['contact']) }}" href="{{ route('contact') }}">contact</a></li> --}}
-                        <li><a class="{{ setActive(['flash-sale']) }}" href="{{ route('flash-sale') }}">flash sale</a></li>
+                        <li><a class="{{ setActive(['flash-sale']) }}" href="{{ route('flash-sale') }}">flash sale</a>
+                        </li>
 
 
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
-                        <li><a href=">track order</a></li>
+                        <li><a
+                                href=">track order</a></li>
                         @if (auth()->check())
                             @if (auth()->user()->role === 'user')
-                                <li><a href="{{ route('user.dashboard') }}">my account</a></li>
-                            @elseif (auth()->user()->role === 'vendor')
-                                <li><a href="{{ route('vendor.dashboard') }}">Vendor Dashboard</a></li>
-                            @elseif (auth()->user()->role === 'admin')
-                                <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
-                            @endif
-                        @else
-                            <li><a href="{{ route('login') }}">login</a></li>
+<li><a href="{{ route('user.dashboard') }}">my
+                                account</a></li>
+                    @elseif (auth()->user()->role === 'vendor')
+                        <li><a href="{{ route('vendor.dashboard') }}">Vendor Dashboard</a></li>
+                    @elseif (auth()->user()->role === 'admin')
+                        <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                        @endif
+                    @else
+                        <li><a href="{{ route('login') }}">login</a></li>
                         @endif
                     </ul>
                 </div>
@@ -164,8 +164,9 @@
                         <li><a href="{{ route('home') }}">home</a></li>
                         {{-- <li><a href="{{ route('vendor.index') }}">vendor</a></li>
                         <li><a href="{{ route('blog') }}">blog</a></li>
-                        <li><a href="{{ route('about') }}">about us</a></li>
-                        <li><a href="{{ route('contact') }}">contact</a></li>
+                        <li><a href="{{ route('about') }}">about us</a></li> --}}
+                        <li><a href="{{ route('products.index') }}">Products</a></li>
+                        {{-- <li><a href="{{ route('contact') }}">contact</a></li>
                         <li><a href="{{ route('product-traking.index') }}">track order</a></li> --}}
                         <li><a href="{{ route('flash-sale') }}">flash sale</a></li>
                     </ul>
