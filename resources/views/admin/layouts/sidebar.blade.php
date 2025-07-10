@@ -107,8 +107,8 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.flash-sale.*']) }}"><a class="nav-link"
                             href="{{ route('admin.flash-sale.index') }}">Flash Sale</a></li>
-                    {{-- <li class="{{ setActive(['admin.coupons.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.coupons.index') }}">Coupons</a></li> --}}
+                    <li class="{{ setActive(['admin.coupons.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.coupons.index') }}">Coupons</a></li>
                     {{-- <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
                             href="{{ route('admin.shipping-rule.index') }}">Shipping Rule</a></li> --}}
 
@@ -245,7 +245,7 @@
             <span>Subscribers</span></a></li> --}}
 
 
-            <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-wrench"></i> 
+            <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-wrench"></i>
                     <span>Settings</span></a></li>
 
         </ul>
