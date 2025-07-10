@@ -31,9 +31,9 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
-    {{-- @if ($settings->layout === 'RTL')
+    @if ($settings->layout === 'RTL')
         <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}">
-    @endif --}}
+    @endif
 
 
 
@@ -43,7 +43,7 @@
             name: "{{ auth()->user()->nmae }}",
             image: "{{ asset(auth()->user()->image) }}"
         }
-        // 
+        //
     </script>
     @vite(['resources/js/app.js', 'resources/js/frontend.js'])
 </head>

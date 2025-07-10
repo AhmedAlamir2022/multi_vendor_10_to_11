@@ -11,6 +11,7 @@
 
             <li class="menu-header">E-commerce</li>
 
+            {{-- manage categories --}}
             <li
                 class="dropdown {{ setActive(['admin.category.*', 'admin.sub-category.*', 'admin.child-category.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list"></i>
@@ -25,6 +26,7 @@
                 </ul>
             </li>
 
+            {{-- manage products --}}
             <li
                 class="dropdown {{ setActive([
                     'admin.brand.*',
@@ -97,13 +99,9 @@
                     <span>Transactions</span></a>
             </li> --}}
 
+
             <li
-                class="dropdown {{ setActive([
-                    'admin.flash-sale.*',
-                    'admin.coupons.*',
-                    'admin.shipping-rule.*',
-                    'admin.payment-settings.*',
-                ]) }}">
+                class="dropdown {{ setActive(['admin.flash-sale.*', 'admin.coupons.*', 'admin.shipping-rule.*', 'admin.payment-settings.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>E-commerce</span></a>
                 <ul class="dropdown-menu">
@@ -184,9 +182,10 @@
 
 
 
-            {{-- <li class="menu-header">Settings & More</li> --}}
+            <li class="menu-header">Settings & More</li>
 
 
+            {{-- manage footer --}}
             {{-- <li
                 class="dropdown {{ setActive([
                     'admin.footer-info.index',
@@ -246,8 +245,8 @@
             <span>Subscribers</span></a></li> --}}
 
 
-            {{-- <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-wrench"></i> --}}
-            {{-- <span>Settings</span></a></li> --}}
+            <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-wrench"></i> 
+                    <span>Settings</span></a></li>
 
         </ul>
 

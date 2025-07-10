@@ -32,9 +32,9 @@
 
 
 
-    {{-- @if ($settings->layout === 'RTL')
+    @if ($settings->layout === 'RTL')
         <link rel="stylesheet" href="{{ asset('backend/assets/css/rtl.css') }}">
-    @endif --}}
+    @endif
 
 
     <script>

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\GeneralSetting;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $generalSetting = GeneralSetting::first();
+
+        /** set time zone */
+        Config::set('app.timezone', $generalSetting->time_zone);
+
+        /** Share variable at all view */
+        View::composer('*', function ($view) use ($generalSetting) {
+            $view->with([
+                'settings' => $generalSetting,
+            ]);
+        });
     }
 }
