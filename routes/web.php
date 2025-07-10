@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     //  user dashboard
@@ -31,6 +32,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
+
+    /** User Address Route */
+    Route::resource('address', UserAddressController::class);
 });
 
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
@@ -39,4 +43,3 @@ Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sal
 Route::get('products', [ProductController::class, 'productsIndex'])->name('products.index');
 Route::get('product-detail/{slug}', [ProductController::class, 'showProduct'])->name('product-detail');
 Route::get('change-product-list-view', [ProductController::class, 'chageListView'])->name('change-product-list-view');
-
