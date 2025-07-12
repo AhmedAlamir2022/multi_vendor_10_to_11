@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
@@ -42,12 +44,12 @@ class HomeController extends Controller
     //     return $typeBaseProducts;
     // }
 
-    // function ShowProductModal(string $id)
-    // {
-    //     $product = Product::findOrFail($id);
-    //     $content = view('frontend.layouts.modal', compact('product'))->render();
-    //     return Response::make($content, 200, ['Content-Type' => 'text/html']);
-    // }
+    function ShowProductModal(string $id)
+    {
+        $product = Product::findOrFail($id);
+        $content = view('frontend.layouts.modal', compact('product'))->render();
+        return Response::make($content, 200, ['Content-Type' => 'text/html']);
+    }
 
     // public function vendorPage()
     // {
