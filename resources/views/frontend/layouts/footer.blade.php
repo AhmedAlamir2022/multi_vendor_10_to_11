@@ -1,4 +1,4 @@
-{{-- @php
+@php
     $footerInfo = Cache::rememberForever('footer_info', function () {
         return \App\Models\FooterInfo::first();
     });
@@ -11,7 +11,7 @@
     $footerTitle = \App\Models\FooterTitle::first();
     $footerGridThreeLinks = Cache::rememberForever('footer_grid_three', function () {
         return \App\Models\FooterGridThree::where('status', 1)->get();
-    }); --}}
+    });
 @endphp
 <footer class="footer_2">
     <div class="container">
@@ -19,9 +19,9 @@
             <div class="col-xl-3 col-sm-7 col-md-6 col-lg-3">
                 <div class="wsus__footer_content">
                     <a class="wsus__footer_2_logo" href="{{ url('/') }}">
-                        <img src="logo" alt="logo">
+                        <img src="{{ asset(@$footerInfo->logo) }}" alt="logo">
                     </a>
-                    {{-- <a class="action" href="callto:{{ @$footerInfo->phone }}"><i
+                    <a class="action" href="callto:{{ @$footerInfo->phone }}"><i
                             class="fas fa-phone-alt"></i>{{ @$footerInfo->phone }}</a>
                     <a class="action" href="mailto:{{ @$footerInfo->email }}"><i
                             class="far fa-envelope"></i>{{ @$footerInfo->email }}</a>
@@ -31,29 +31,29 @@
                             <li><a class="behance" href="{{ $link->url }}"><i class="{{ $link->icon }}"></i></a>
                             </li>
                         @endforeach
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
             <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
                 <div class="wsus__footer_content">
-                    {{-- <h5>{{ $footerTitle->footer_grid_two_title }}</h5>
+                    <h5>{{ $footerTitle->footer_grid_two_title }}</h5>
                     <ul class="wsus__footer_menu">
                         @foreach ($footerGridTwoLinks as $link)
                             <li><a href="{{ $link->url }}"><i class="fas fa-caret-right"></i>
                                     {{ $link->name }}</a></li>
                         @endforeach
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
             <div class="col-xl-2 col-sm-5 col-md-4 col-lg-2">
                 <div class="wsus__footer_content">
-                    {{-- <h5>{{ $footerTitle->footer_grid_three_title }}</h5>
+                    <h5>{{ $footerTitle->footer_grid_three_title }}</h5>
                     <ul class="wsus__footer_menu">
                         @foreach ($footerGridThreeLinks as $link)
                             <li><a href="{{ $link->url }}"><i class="fas fa-caret-right"></i>
                                     {{ $link->name }}</a></li>
                         @endforeach
-                    </ul> --}}
+                    </ul>
                 </div>
             </div>
             <div class="col-xl-4 col-sm-7 col-md-8 col-lg-5">
@@ -68,7 +68,7 @@
                     </form>
                     <div class="footer_payment">
                         <p>We're using safe payment for :</p>
-                        <img src="{{asset('frontend/images/credit2.png')}}" alt="card" class="img-fluid">
+                        <img src="{{ asset('frontend/images/credit2.png') }}" alt="card" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__copyright d-flex justify-content-center">
-                        {{-- <p>{{ @$footerInfo->copyright }}</p> --}}
+                        <p>{{ @$footerInfo->copyright }}</p>
                     </div>
                 </div>
             </div>

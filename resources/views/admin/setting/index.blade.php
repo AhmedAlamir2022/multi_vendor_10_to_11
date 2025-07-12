@@ -35,7 +35,7 @@
 
                                         @include('admin.setting.general-setting')
 
-                                        {{-- @include('admin.setting.email-configuration') --}}
+                                        @include('admin.setting.email-configuration')
 
                                         {{-- @include('admin.setting.logo-setting') --}}
 

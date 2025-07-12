@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\EmailConfiguration;
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
@@ -23,9 +24,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $generalSetting = GeneralSetting::first();
+        // $logoSetting = LogoSetting::first();
+        $mailSetting = EmailConfiguration::first();
+        // $pusherSetting = PusherSetting::first();
 
         /** set time zone */
         Config::set('app.timezone', $generalSetting->time_zone);
+
+        /** Set Mail Config */
+        Config::set('mail.mailers.smtp.host', $mailSetting->host);
+        Config::set('mail.mailers.smtp.port', $mailSetting->port);
+        Config::set('mail.mailers.smtp.encryption', $mailSetting->encryption);
+        Config::set('mail.mailers.smtp.username', $mailSetting->username);
+        Config::set('mail.mailers.smtp.password', $mailSetting->password);
 
         /** Share variable at all view */
         View::composer('*', function ($view) use ($generalSetting) {

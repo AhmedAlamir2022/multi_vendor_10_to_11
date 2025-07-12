@@ -186,7 +186,7 @@
 
 
             {{-- manage footer --}}
-            {{-- <li
+            <li
                 class="dropdown {{ setActive([
                     'admin.footer-info.index',
                     'admin.footer-socials.*',
@@ -209,7 +209,7 @@
                             href="{{ route('admin.footer-grid-three.index') }}">Footer Grid Three</a></li>
 
                 </ul>
-            </li> --}}
+            </li>
 
             {{-- <li
                 class="dropdown {{ setActive([
@@ -240,9 +240,9 @@
             </li> --}}
 
 
-            {{-- <li><a class="nav-link {{ setActive(['admin.subscribers.*']) }}"
+            <li><a class="nav-link {{ setActive(['admin.subscribers.*']) }}"
             href="{{ route('admin.subscribers.index') }}"><i class="fas fa-user"></i>
-            <span>Subscribers</span></a></li> --}}
+            <span>Subscribers</span></a></li>
 
 
             <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-wrench"></i>
