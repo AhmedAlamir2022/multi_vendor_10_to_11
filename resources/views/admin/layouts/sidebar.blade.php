@@ -157,9 +157,9 @@
                 </ul>
             </li>
 
-            {{-- <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}"
+            <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}"
             href="{{ route('admin.advertisement.index') }}"><i class="fas fa-ad"></i>
-            <span>Advertisement</span></a></li> --}}
+            <span>Advertisement</span></a></li>
 
             {{-- <li
                 class="dropdown {{ setActive(['admin.blog-category.*', 'admin.blog.*', 'admin.blog-comments.index']) }}">
