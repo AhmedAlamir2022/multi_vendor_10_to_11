@@ -61,7 +61,7 @@
                 </ul>
             </li>
 
-            {{-- <li
+            <li
                 class="dropdown {{ setActive([
                     'admin.order.*',
                     'admin.pending-orders',
@@ -92,7 +92,7 @@
                     <li class="{{ setActive(['admin.canceled-orders']) }}"><a class="nav-link"
                             href="{{ route('admin.canceled-orders') }}">All Canceled Orders</a></li>
                 </ul>
-            </li> --}}
+            </li>
 
             {{-- <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
                     href="{{ route('admin.transaction') }}"><i class="fas fa-money-bill-alt"></i>
