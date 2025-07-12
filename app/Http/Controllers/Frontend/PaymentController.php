@@ -13,6 +13,9 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
@@ -168,7 +171,7 @@ class PaymentController extends Controller
 
     public function paypalCancel()
     {
-        toastr('Someting went wrong try agin later!', 'error', 'Error');
+        toastr('Something went wrong try again later!', 'error', 'Error');
         return redirect()->route('user.payment');
     }
 
@@ -194,7 +197,7 @@ class PaymentController extends Controller
             $this->clearSession();
             return redirect()->route('user.payment.success');
         } else {
-            toastr('Someting went wrong try agin later!', 'error', 'Error');
+            toastr('Something went wrong try again later!', 'error', 'Error');
             return redirect()->route('user.payment');
         }
     }
