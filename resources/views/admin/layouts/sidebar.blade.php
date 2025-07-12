@@ -112,8 +112,8 @@
                     <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
                             href="{{ route('admin.shipping-rule.index') }}">Shipping Rule</a></li>
 
-                    {{-- <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.payment-settings.index') }}">Payment Settings</a></li> --}}
+                    <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.payment-settings.index') }}">Payment Settings</a></li>
 
                 </ul>
             </li>

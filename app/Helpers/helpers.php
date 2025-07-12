@@ -107,6 +107,23 @@ function calculateDiscountPercent($originalPrice, $discountPrice)
     return round($discountPercent);
 }
 
+/** get selected shipping fee from session */
+function getShppingFee()
+{
+    if (Session::has('shipping_method')) {
+        return Session::get('shipping_method')['cost'];
+    } else {
+        return 0;
+    }
+}
+
+/** get payable amount */
+function getFinalPayableAmount()
+{
+    return  getMainCartTotal() + getShppingFee();
+}
+
+
 /** lemit text */
 function limitText($text, $limit = 20)
 {
