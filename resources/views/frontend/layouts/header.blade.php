@@ -33,12 +33,12 @@
                         </div>
                     </div>
                     <ul class="wsus__icon_area">
-                        <li><a href=""><i class="fal fa-heart"></i><span id="wishlist_count">
-                                    {{-- @if (auth()->check())
+                        <li><a href="{{ route('user.wishlist.index') }}"><i class="fal fa-heart"></i><span id="wishlist_count">
+                                    @if (auth()->check())
                                         {{ \App\Models\Wishlist::where('user_id', auth()->user()->id)->count() }}
                                     @else
                                         0
-                                    @endif --}}
+                                    @endif
                                 </span></a></li>
                         <li><a class="wsus__cart_icon" href="#"><i class="fal fa-shopping-bag"></i><span
                                     id="cart-count">{{ Cart::content()->count() }}</span></a></li>
