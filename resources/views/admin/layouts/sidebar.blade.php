@@ -94,10 +94,10 @@
                 </ul>
             </li>
 
-            {{-- <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
+            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
                     href="{{ route('admin.transaction') }}"><i class="fas fa-money-bill-alt"></i>
                     <span>Transactions</span></a>
-            </li> --}}
+            </li>
 
 
             <li
