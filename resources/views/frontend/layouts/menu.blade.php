@@ -62,7 +62,7 @@
 
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
-                        <li><a href="">track order</a></li>
+                        <li><a href="{{ route('product-traking.index') }}">track order</a></li>
                         @if (auth()->check())
                             @if (auth()->user()->role === 'user')
                                 <li><a href="{{ route('user.dashboard') }}">my
