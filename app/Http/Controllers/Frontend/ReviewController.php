@@ -13,9 +13,10 @@ class ReviewController extends Controller
 {
     use ImageUploadTrait;
 
-    public function index(UserProductReviewsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('frontend.dashboard.review.index');
+        $reviews = ProductReview::with('product')->where('user_id', Auth::user()->id)->latest()->get();
+        return view('frontend.dashboard.review.index', compact('reviews'));
     }
 
     public function create(Request $request)

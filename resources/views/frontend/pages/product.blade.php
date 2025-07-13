@@ -6,8 +6,8 @@
 
 @section('content')
     <!--============================
-                        BREADCRUMB START
-                    ==============================-->
+                            BREADCRUMB START
+                        ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,13 +24,13 @@
         </div>
     </section>
     <!--============================
-                        BREADCRUMB END
-                    ==============================-->
+                            BREADCRUMB END
+                        ==============================-->
 
 
     <!--============================
-                        PRODUCT PAGE START
-                    ==============================-->
+                            PRODUCT PAGE START
+                        ==============================-->
     <section id="wsus__product_page">
         <div class="container">
             <div class="row">
@@ -341,7 +341,7 @@
                                                                 cart</button>
                                                         </form>
                                                         {{-- <li><a href="#"><i class="far fa-heart"></i></a></li> --}}
-                                                        <li><a href="" class="add_to_wishlist"
+                                                        <li><a href="#" class="add_to_wishlist"
                                                                 data-id="{{ $product->id }}"><i
                                                                     class="far fa-heart"></i></a></li>
                                                         {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
@@ -377,8 +377,8 @@
         </div>
     </section>
     <!--============================
-                        PRODUCT PAGE END
-                    ==============================-->
+                            PRODUCT PAGE END
+                        ==============================-->
 @endsection
 
 @push('scripts')

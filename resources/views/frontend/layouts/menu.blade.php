@@ -51,8 +51,8 @@
                         <li><a class="{{ setActive(['home']) }}" href="{{ url('/') }}">home</a></li>
                         <li><a class="{{ setActive(['products.index']) }}"
                                 href="{{ route('products.index') }}">Products</a></li>
-                        {{-- <li><a class="{{ setActive(['vendor.index']) }}" href="{{ route('vendor.index') }}">vendors</a>
-                        </li> --}}
+                        <li><a class="{{ setActive(['vendor.index']) }}" href="{{ route('vendor.index') }}">vendors</a>
+                        </li>
                         {{-- <li><a class="{{ setActive(['blog']) }}" href="{{ route('blog') }}">blog</a></li> --}}
                         {{-- <li><a class="{{ setActive(['about']) }}" href="{{ route('about') }}">about</a></li> --}}
                         {{-- <li><a class="{{ setActive(['contact']) }}" href="{{ route('contact') }}">contact</a></li> --}}

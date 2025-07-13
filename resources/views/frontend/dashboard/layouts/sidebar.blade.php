@@ -14,22 +14,23 @@
         <li><a class="" href="{{ url('/') }}"><i class="fas fa-home"></i>Go To Home Page</a></li>
 
         @if (auth()->user()->role === 'vendor')
-            <li><a class="{{ setActive(['vendor.dashboard']) }}" href=""><i class="fas fa-tachometer"></i>Go to
+            <li><a class="{{ setActive(['vendor.dashboard']) }}" href="{{ route('vendor.dashboard') }}"><i
+                        class="fas fa-tachometer"></i>Go to
                     Vendor Dashboard</a></li>
         @endif
 
 
         <li><a class="{{ setActive(['user.orders.*']) }}" href="{{ route('user.orders.index') }}"><i
                     class="fas fa-list-ul"></i> Orders</a></li>
-        <li><a class="{{ setActive(['user.review.*']) }}" href=""><i class="far fa-star"></i> Reviews</a></li>
+        <li><a class="{{ setActive(['user.review.*']) }}" href="{{ route('user.review.index') }}"><i class="far fa-star"></i> Reviews</a></li>
 
         <li><a class="{{ setActive(['user.profile']) }}" href="{{ route('user.profile') }}"><i class="far fa-user"></i>
                 My Profile</a></li>
         <li><a class="{{ setActive(['user.address.*']) }}" href="{{ route('user.address.index') }}"><i
                     class="fal fa-gift-card"></i> Addresses</a></li>
         @if (auth()->user()->role !== 'vendor')
-            <li><a class="{{ setActive(['user.vendor-request.*']) }}" href="{"><i class="far fa-user"></i>
-                    Request to be
+            <li><a class="{{ setActive(['user.vendor-request.*']) }}"
+                    href="{{ route('user.vendor-request.index') }}"><i class="far fa-user"></i> Request to be
                     vendor</a></li>
         @endif
         <li>
