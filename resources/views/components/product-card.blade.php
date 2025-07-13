@@ -17,6 +17,7 @@
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="show_product_modal"
                     data-id="{{ $product->id }}"><i class="far fa-eye"></i></a></li>
             <li><a href="" class="add_to_wishlist" data-id="{{ $product->id }}"><i class="far fa-heart"></i></a>
+            </li>
             {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
         </ul>
         <div class="wsus__product_details">
@@ -36,11 +37,11 @@
             <a class="wsus__pro_name"
                 href="{{ route('product-detail', $product->slug) }}">{{ limitText($product->name, 52) }}</a>
             @if (checkDiscount($product))
-                <p class="wsus__price">${{ $product->offer_price }}
-                    <del>${{ $product->price }}</del>
+                <p class="wsus__price">{{ $settings->currency_icon }}{{ $product->offer_price }}
+                    <del>{{ $settings->currency_icon }} {{ $product->price }}</del>
                 </p>
             @else
-                <p class="wsus__price">${{ $product->price }}</p>
+                <p class="wsus__price">{{ $settings->currency_icon }} {{ $product->price }}</p>
             @endif
             <form class="shopping-cart-form">
                 <input type="hidden" name="product_id" value="{{ $product->id }}">

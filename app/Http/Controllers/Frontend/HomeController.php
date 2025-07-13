@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adverisement;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\FlashSale;
@@ -30,17 +31,17 @@ class HomeController extends Controller
         $categoryProductSliderSectionThree = HomePageSetting::where('key', 'product_slider_section_three')->first();
 
         // banners
-        // $homepage_secion_banner_one = Adverisement::where('key', 'homepage_secion_banner_one')->first();
-        // $homepage_secion_banner_one = json_decode($homepage_secion_banner_one->value);
+        $homepage_secion_banner_one = Adverisement::where('key', 'homepage_secion_banner_one')->first();
+        $homepage_secion_banner_one = json_decode($homepage_secion_banner_one->value);
 
-        // $homepage_secion_banner_two = Adverisement::where('key', 'homepage_secion_banner_two')->first();
-        // $homepage_secion_banner_two = json_decode($homepage_secion_banner_two?->value);
+        $homepage_secion_banner_two = Adverisement::where('key', 'homepage_secion_banner_two')->first();
+        $homepage_secion_banner_two = json_decode($homepage_secion_banner_two?->value);
 
-        // $homepage_secion_banner_three = Adverisement::where('key', 'homepage_secion_banner_three')->first();
-        // $homepage_secion_banner_three = json_decode($homepage_secion_banner_three?->value);
+        $homepage_secion_banner_three = Adverisement::where('key', 'homepage_secion_banner_three')->first();
+        $homepage_secion_banner_three = json_decode($homepage_secion_banner_three?->value);
 
-        // $homepage_secion_banner_four = Adverisement::where('key', 'homepage_secion_banner_four')->first();
-        // $homepage_secion_banner_four = json_decode($homepage_secion_banner_four?->value);
+        $homepage_secion_banner_four = Adverisement::where('key', 'homepage_secion_banner_four')->first();
+        $homepage_secion_banner_four = json_decode($homepage_secion_banner_four?->value);
 
         $popularCategory = HomePageSetting::where('key', 'popular_category_section')->first();
         $flashSaleDate = FlashSale::first();
@@ -57,10 +58,10 @@ class HomeController extends Controller
                 'categoryProductSliderSectionOne',
                 'categoryProductSliderSectionTwo',
                 'categoryProductSliderSectionThree',
-                // 'homepage_secion_banner_one',
-                // 'homepage_secion_banner_two',
-                // 'homepage_secion_banner_three',
-                // 'homepage_secion_banner_four'
+                'homepage_secion_banner_one',
+                'homepage_secion_banner_two',
+                'homepage_secion_banner_three',
+                'homepage_secion_banner_four'
             )
         );
     }
@@ -68,16 +69,20 @@ class HomeController extends Controller
     public function getTypeBaseProduct()
     {
         $typeBaseProducts = [];
-        $typeBaseProducts['new_arrival'] = Product::with(['variants', 'category', 'productImageGalleries'])
+        $typeBaseProducts['new_arrival'] = Product::withAvg('reviews', 'rating')->withCount('reviews')
+            ->with(['variants', 'category', 'productImageGalleries'])
             ->where(['product_type' => 'new_arrival', 'is_approved' => 1, 'status' => 1])->orderBy('id', 'DESC')->take(8)->get();
 
-        $typeBaseProducts['featured_product'] = Product::with(['variants', 'category', 'productImageGalleries'])
+        $typeBaseProducts['featured_product'] = Product::withAvg('reviews', 'rating')->withCount('reviews')
+            ->with(['variants', 'category', 'productImageGalleries'])
             ->where(['product_type' => 'featured_product', 'is_approved' => 1, 'status' => 1])->orderBy('id', 'DESC')->take(8)->get();
 
-        $typeBaseProducts['top_product'] = Product::with(['variants', 'category', 'productImageGalleries'])
+        $typeBaseProducts['top_product'] = Product::withAvg('reviews', 'rating')->withCount('reviews')
+            ->with(['variants', 'category', 'productImageGalleries'])
             ->where(['product_type' => 'top_product', 'is_approved' => 1, 'status' => 1])->orderBy('id', 'DESC')->take(8)->get();
 
-        $typeBaseProducts['best_product'] = Product::with(['variants', 'category', 'productImageGalleries'])
+        $typeBaseProducts['best_product'] = Product::withAvg('reviews', 'rating')->withCount('reviews')
+            ->with(['variants', 'category', 'productImageGalleries'])
             ->where(['product_type' => 'best_product', 'is_approved' => 1, 'status' => 1])->orderBy('id', 'DESC')->take(8)->get();
 
         return $typeBaseProducts;
@@ -104,6 +109,5 @@ class HomeController extends Controller
         $brands = Brand::where(['status' => 1])->get();
         $vendor = User::findOrFail($id);
         return view('frontend.pages.vendor-product', compact('products', 'categories', 'brands', 'vendor'));
-
     }
 }

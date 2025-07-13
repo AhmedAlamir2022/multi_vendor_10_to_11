@@ -1,13 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    Category Products ||
+    Category Products || {{ $settings->site_name }}
 @endsection
 
 @section('content')
     <!--============================
-                                BREADCRUMB START
-                            ==============================-->
+                        BREADCRUMB START
+                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,19 +24,19 @@
         </div>
     </section>
     <!--============================
-                                BREADCRUMB END
-                            ==============================-->
+                        BREADCRUMB END
+                    ==============================-->
 
 
     <!--============================
-                                PRODUCT PAGE START
-                            ==============================-->
+                        PRODUCT PAGE START
+                    ==============================-->
     <section id="wsus__product_page">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="wsus__pro_page_bammer">
-                        {{-- @if ($productpage_banner_section->banner_one->status == 1)
+                        @if ($productpage_banner_section->banner_one->status == 1)
                             <img src="{{ asset($productpage_banner_section->banner_one->banner_image) }}" alt="banner"
                                 class="img-fluid w-100">
                             <div class="wsus__pro_page_bammer_text">
@@ -48,9 +48,19 @@
                                         class="add_cart">Discover Now</a>
                                 </div>
                             </div>
-                        @endif --}}
+                        @endif
                     </div>
                 </div>
+                {{-- <div class="col-xl-12">
+                    <div class="wsus__pro_page_bammer">
+                        @if ($productpage_banner_section->banner_one->status == 1)
+                            <a href="{{ $productpage_banner_section->banner_one->banner_url }}">
+                                <img class="img-gluid"
+                                    src="{{ asset($productpage_banner_section->banner_one->banner_image) }}" alt="">
+                            </a>
+                        @endif
+                    </div>
+                </div> --}}
                 <div class="col-xl-3 col-lg-4">
                     <div class="wsus__sidebar_filter ">
                         <p>filter</p>
@@ -82,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="accordion-item">
+                            <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -107,7 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree3">
@@ -213,12 +223,12 @@
                                                         href="{{ route('product-detail', $product->slug) }}">{{ limitText($product->name, 53) }}</a>
                                                     @if (checkDiscount($product))
                                                         <p class="wsus__price">
-                                                            ${{ $product->offer_price }}
-                                                            <del>${{ $product->price }}</del>
+                                                            {{ $settings->currency_icon }}{{ $product->offer_price }}
+                                                            <del>{{ $settings->currency_icon }}{{ $product->price }}</del>
                                                         </p>
                                                     @else
                                                         <p class="wsus__price">
-                                                            ${{ $product->price }}</p>
+                                                            {{ $settings->currency_icon }}{{ $product->price }}</p>
                                                     @endif
                                                     <form class="shopping-cart-form">
                                                         <input type="hidden" name="product_id"
@@ -296,12 +306,12 @@
 
                                                     @if (checkDiscount($product))
                                                         <p class="wsus__price">
-                                                            ${{ $product->offer_price }}
-                                                            <del>${{ $product->price }}</del>
+                                                            {{ $settings->currency_icon }}{{ $product->offer_price }}
+                                                            <del>{{ $settings->currency_icon }}{{ $product->price }}</del>
                                                         </p>
                                                     @else
                                                         <p class="wsus__price">
-                                                            ${{ $product->price }}</p>
+                                                            {{ $settings->currency_icon }}{{ $product->price }}</p>
                                                     @endif
 
                                                     <p class="list_description">{{ $product->short_description }}</p>
@@ -367,8 +377,8 @@
         </div>
     </section>
     <!--============================
-                                PRODUCT PAGE END
-                            ==============================-->
+                        PRODUCT PAGE END
+                    ==============================-->
 @endsection
 
 @push('scripts')

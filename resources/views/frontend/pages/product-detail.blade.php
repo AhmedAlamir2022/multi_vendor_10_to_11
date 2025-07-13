@@ -89,7 +89,7 @@
                             @else
                                 <h4>${{ $product->price }}</h4>
                             @endif
-                            {{-- <p class="wsus__pro_rating">
+                            <p class="wsus__pro_rating">
                                 @php
                                     $avgRating = $product->reviews()->avg('rating');
                                     $fullRating = round($avgRating);
@@ -104,7 +104,7 @@
                                 @endfor
 
                                 <span>({{ count($product->reviews) }} review)</span>
-                            </p> --}}
+                            </p>
                             <p class="description">{!! $product->short_description !!}</p>
 
                             <form class="shopping-cart-form">
@@ -224,7 +224,7 @@
                                             <div class="col-xl-6 col-xxl-7 col-md-6 mt-4 mt-md-0">
                                                 <div class="wsus__pro_det_vendor_text">
                                                     <h4>{{ $product->vendor->name }}</h4>
-                                                    {{-- <p class="rating">
+                                                    <p class="rating">
                                                         @php
                                                             $avgRating = $product->reviews()->avg('rating');
                                                             $fullRating = round($avgRating);
@@ -239,7 +239,7 @@
                                                         @endfor
 
                                                         <span>({{ count($product->reviews) }} review)</span>
-                                                    </p> --}}
+                                                    </p>
                                                     <p><span>Store Name:</span> {{ $product->vendor->shop_name }}</p>
                                                     <p><span>Address:</span> {{ $product->vendor->address }}</p>
                                                     <p><span>Phone:</span> {{ $product->vendor->phone }}</p>
@@ -260,7 +260,7 @@
                                     aria-labelledby="pills-contact-tab2">
                                     <div class="wsus__pro_det_review">
                                         <div class="wsus__pro_det_review_single">
-                                            {{-- <div class="row">
+                                            <div class="row">
                                                 <div class="col-xl-8 col-lg-7">
                                                     <div class="wsus__comment_area">
                                                         <h4>Reviews <span>{{ count($reviews) }}</span></h4>
@@ -372,7 +372,7 @@
                                                     @endauth
 
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
