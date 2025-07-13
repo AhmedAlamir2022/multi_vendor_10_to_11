@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ReviewController;
@@ -68,6 +69,16 @@ Route::get('newsletter-verify/{token}', [NewsletterController::class, 'newsLette
 /** vendor page routes */
 Route::get('vendors', [HomeController::class, 'vendorPage'])->name('vendor.index');
 Route::get('vendor-product/{id}', [HomeController::class, 'vendorProductsPage'])->name('vendor.products');
+
+/** about page route */
+Route::get('about', [PageController::class, 'about'])->name('about');
+
+/** terms and conditions page route */
+Route::get('terms-and-conditions', [PageController::class, 'termsAndCondition'])->name('terms-and-conditions');
+
+/** contact route */
+Route::get('contact', [PageController::class, 'contact'])->name('contact');
+Route::post('contact', [PageController::class, 'handleContactForm'])->name('handle-contact-form');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     //  user dashboard
