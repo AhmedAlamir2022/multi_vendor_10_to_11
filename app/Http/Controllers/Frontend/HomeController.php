@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Adverisement;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\FlashSale;
@@ -46,6 +47,8 @@ class HomeController extends Controller
         $popularCategory = HomePageSetting::where('key', 'popular_category_section')->first();
         $flashSaleDate = FlashSale::first();
         $flashSaleItems = FlashSaleItem::where('show_at_home', 1)->where('status', 1)->pluck('product_id')->toArray();
+
+        $recentBlogs = Blog::latest()->get();
         return view(
             'frontend.home.home',
             compact(
@@ -61,7 +64,8 @@ class HomeController extends Controller
                 'homepage_secion_banner_one',
                 'homepage_secion_banner_two',
                 'homepage_secion_banner_three',
-                'homepage_secion_banner_four'
+                'homepage_secion_banner_four',
+                'recentBlogs'
             )
         );
     }
