@@ -32,9 +32,9 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
-    {{-- @if ($settings->layout === 'RTL')
+    @if ($settings->layout === 'RTL')
         <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}">
-    @endif --}}
+    @endif
     @vite(['resources/js/app.js'])
 </head>
 

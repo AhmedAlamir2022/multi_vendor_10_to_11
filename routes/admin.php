@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\FooterInfoController;
 use App\Http\Controllers\Backend\FooterSocialController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\ManageUserController;
+use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -133,7 +134,7 @@ Route::get('settings', [SettingController::class, 'index'])->name('settings.inde
 Route::put('generale-setting-update', [SettingController::class, 'generalSettingUpdate'])->name('generale-setting-update');
 Route::put('email-setting-update', [SettingController::class, 'emailConfigSettingUpdate'])->name('email-setting-update');
 Route::put('logo-setting-update', [SettingController::class, 'logoSettingUpdate'])->name('logo-setting-update');
-// Route::put('pusher-setting-update', [SettingController::class, 'pusherSettingUpdate'])->name('pusher-setting-update');
+Route::put('pusher-setting-update', [SettingController::class, 'pusherSettingUpdate'])->name('pusher-setting-update');
 
 /** home page setting route */
 Route::get('home-page-setting', [HomePageSettingController::class, 'index'])->name('home-page-setting');
@@ -249,3 +250,8 @@ Route::resource('withdraw-method', WithdrawMehtodController::class);
 Route::get('withdraw', [WithdrawController::class, 'index'])->name('withdraw.index');
 Route::get('withdraw/{id}', [WithdrawController::class, 'show'])->name('withdraw.show');
 Route::put('withdraw/{id}', [WithdrawController::class, 'update'])->name('withdraw.update');
+
+/** Message route */
+Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
+Route::get('get-messages', [MessageController::class, 'getMessages'])->name('get-messages');
+Route::post('send-message', [MessageController::class, 'sendMessage'])->name('send-message');

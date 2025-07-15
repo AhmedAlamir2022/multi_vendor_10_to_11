@@ -22,9 +22,9 @@
                     <div class="col-12">
                         <h4>products details</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Product</a></li>
-                            <li><a href="#">Product Details</a></li>
+                            <li><a href="#">home</a></li>
+                            <li><a href="#">peoduct</a></li>
+                            <li><a href="#">product details</a></li>
                         </ul>
                     </div>
                 </div>
@@ -83,11 +83,11 @@
                                     item)</p>
                             @endif
                             @if (checkDiscount($product))
-                                <h4>${{ $product->offer_price }}
-                                    <del>${{ $product->price }}</del>
+                                <h4>{{ $settings->currency_icon }}{{ $product->offer_price }}
+                                    <del>{{ $settings->currency_icon }}{{ $product->price }}</del>
                                 </h4>
                             @else
-                                <h4>${{ $product->price }}</h4>
+                                <h4>{{ $settings->currency_icon }}{{ $product->price }}</h4>
                             @endif
                             <p class="wsus__pro_rating">
                                 @php
@@ -244,7 +244,7 @@
                                                     <p><span>Address:</span> {{ $product->vendor->address }}</p>
                                                     <p><span>Phone:</span> {{ $product->vendor->phone }}</p>
                                                     <p><span>mail:</span> {{ $product->vendor->email }}</p>
-                                                    <a href=""
+                                                    <a href="{{ route('vendor.products', $product->vendor->id) }}"
                                                         class="see_btn">visit store</a>
                                                 </div>
                                             </div>
@@ -461,7 +461,7 @@
 
                 $.ajax({
                     method: 'POST',
-
+                    url: '{{ route('user.send-message') }}',
                     data: formData,
                     beforeSend: function() {
                         let html =
@@ -475,7 +475,7 @@
                     success: function(response) {
                         $('.message-box').val('');
                         $('.modal-body').append(
-                            `<div class="alert alert-success mt-2"><a href="" class="text-primary">Click here</a> for go to messenger.</div>`
+                            `<div class="alert alert-success mt-2"><a href="{{ route('user.messages.index') }}" class="text-primary">Click here</a> for go to messenger.</div>`
                         )
                         toastr.success(response.message);
                     },

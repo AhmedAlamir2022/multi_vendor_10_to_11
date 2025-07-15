@@ -8,7 +8,7 @@
         <li><a class="{{ setActive(['user.dashboard']) }}" href="{{ route('user.dashboard') }}"><i
                     class="fas fa-tachometer"></i>Dashboard</a></li>
 
-        <li><a class="{{ setActive(['user.messages.index']) }}" href=""><i
+        <li><a class="{{ setActive(['user.messages.index']) }}" href="{{ route('user.messages.index') }}"><i
                     class="fas fa-tachometer"></i>Messages</a></li>
 
         <li><a class="" href="{{ url('/') }}"><i class="fas fa-home"></i>Go To Home Page</a></li>
