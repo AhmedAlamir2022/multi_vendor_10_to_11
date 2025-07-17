@@ -6,8 +6,8 @@
 
 @section('content')
     <!--============================
-                    BREADCRUMB START
-                ==============================-->
+                        BREADCRUMB START
+                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,13 +24,13 @@
         </div>
     </section>
     <!--============================
-                    BREADCRUMB END
-                ==============================-->
+                        BREADCRUMB END
+                    ==============================-->
 
 
     <!--============================
-                LOGIN/REGISTER PAGE START
-                ==============================-->
+                    LOGIN/REGISTER PAGE START
+                    ==============================-->
     <section id="wsus__login_register">
         <div class="container">
             <div class="row">
@@ -76,8 +76,8 @@
                                         <button class="common_btn" type="submit">login</button>
                                         <p class="social_text">Sign in with social account</p>
                                         <ul class="wsus__login_link">
-                                            {{-- <li><a href="{{ route('google.login') }}"><i class="fab fa-google"></i></a></li>
-                                            <li><a href="{{ route('github.login') }}"><i class="fab fa-github"></i></a></li> --}}
+                                            <li><a href="{{ route('google.login') }}"><i class="fab fa-google"></i></a></li>
+                                            <li><a href="{{ route('github.login') }}"><i class="fab fa-github"></i></a></li>
                                         </ul>
                                     </form>
                                 </div>
@@ -103,8 +103,7 @@
 
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input id="password" name="password" type="password"
-                                                placeholder="Password">
+                                            <input id="password" name="password" type="password" placeholder="Password">
                                         </div>
 
 
@@ -125,6 +124,6 @@
         </div>
     </section>
     <!--============================
-                   LOGIN/REGISTER PAGE END
-                ==============================-->
+                       LOGIN/REGISTER PAGE END
+                    ==============================-->
 @endsection
