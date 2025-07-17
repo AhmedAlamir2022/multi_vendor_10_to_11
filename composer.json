@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
+        "laravel/socialite": "^5.21",
         "laravel/tinker": "^2.8",
         "srmklive/paypal": "~3.0",
         "stripe/stripe-php": "^17.4",

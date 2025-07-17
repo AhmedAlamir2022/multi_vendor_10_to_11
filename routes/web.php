@@ -19,7 +19,10 @@ use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\UserVendorReqeustController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +38,44 @@ use Illuminate\Support\Facades\Route;
 /** Home routes */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 require __DIR__ . '/auth.php';
+
+/** auth google */
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
+
+Route::get('auth/google/callback', function () {
+    $user = Socialite::driver('google')->user();
+    //dd($user);
+    $user = User::firstOrCreate([
+        'email' => $user->email,
+    ], [
+        'name' => $user->name,
+        'password' => bcrypt(Str::random(20))
+    ]);
+    Auth::login($user, true);
+    return redirect('user/dashboard');
+});
+
+/** auth github */
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+})->name('github.login');
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')->user();
+    $user = User::firstOrCreate([
+        'email' => $user->email,
+    ], [
+        'name' => $user->name,
+        'password' => bcrypt(Str::random(20))
+    ]);
+    Auth::login($user, true);
+    return redirect('user/dashboard');
+
+});
+
+
 
 /** flash sale routes */
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
